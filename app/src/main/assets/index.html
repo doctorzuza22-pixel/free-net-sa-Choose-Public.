@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#10251f"><title>FREE NET SA</title>
 <style>
-:root{--ink:#10251f;--green:#176b4a;--mint:#e8f4ee;--paper:#f7f8f6;--muted:#68756e;--line:#e2e9e4}
+:root{--ink:#10251f;--green:#176b4a;--mint:#e8f4ee;--paper:#f7f8f6;--muted:#68756e;--line:#e2e9e4;--amber:#fff4d9}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px Arial,sans-serif}
 header{background:var(--ink);color:white;padding:25px 20px 22px;border-radius:0 0 22px 22px}
 .brand{font-weight:900;letter-spacing:1.1px;font-size:22px}.brand span{color:#70d5a2}.tag{color:#d2e7db;font-size:13px;margin-top:7px}
@@ -16,30 +16,32 @@ button,.action{border:0;border-radius:12px;padding:13px 10px;background:var(--mi
 .card p{color:var(--muted);font-size:14px;line-height:1.5;margin:7px 0 0}
 .card .action{margin-top:12px;width:100%}
 .pill{display:inline-block;background:var(--mint);color:var(--green);font-size:11px;font-weight:700;padding:5px 8px;border-radius:30px}
+.pill.pending{background:var(--amber);color:#765516}
 .meta{font-size:12px;color:var(--muted);margin-top:8px}
 .notice{background:#fff8e7;border:1px solid #f0dfb5;border-radius:13px;padding:14px;font-size:13px;line-height:1.5;color:#5d4a20;margin-top:14px}
 .empty{color:var(--muted);font-size:14px;padding:12px 2px}footer{color:var(--muted);font-size:12px;text-align:center;padding:22px}
 </style></head><body>
 <header><div class="brand">FREE NET <span>SA</span></div><div class="tag">Find legitimate free internet access across South Africa</div></header>
 <main>
-<h2>Find free internet near you</h2>
-<input id="place" class="search" placeholder="Enter town, suburb or province" aria-label="Town, suburb or province">
+<h2>Start in Bloemhof, North West</h2>
+<input id="place" class="search" value="Bloemhof, North West" placeholder="Enter town, suburb or province" aria-label="Town, suburb or province">
 <div class="actions"><button class="primary" onclick="findPlaces()">Search directory</button><button onclick="openMap()">Search map</button></div>
-<h2>Verified access programmes</h2>
+<h2>Bloemhof: places to check</h2>
 <div id="results"></div>
-<div class="notice"><strong>Keep your data bill at zero:</strong> when you are relying on public Wi-Fi, switch mobile data OFF in your phone's quick settings. Some phones may switch back to mobile data automatically, so check your settings. FREE NET SA cannot switch off carrier data for you.</div>
+<h2>North West and nearby</h2>
+<div class="card"><span class="pill pending">NOT CONFIRMED IN BLOEMHOF</span><h3>North West public connectivity</h3><p>We have not yet found an official, current public Wi-Fi hotspot list for Bloemhof. We are checking municipal and provincial programmes before listing any site as free internet.</p><a class="action" href="https://www.nwgov.co.za/communications">North West Government information</a></div>
+<div class="notice"><strong>Save your mobile data:</strong> turn mobile data OFF in Quick Settings before joining Wi-Fi. Check that it stays off, so your phone does not use paid data if Wi-Fi drops.</div>
 <h2>Public Wi-Fi safety</h2>
-<div class="card"><strong>Protect your information</strong><p>Confirm the network name with staff or posted signs. Avoid banking and sensitive logins on public Wi-Fi. Prefer websites that use HTTPS, keep your phone updated, and disconnect when finished.</p></div>
-<div class="notice"><strong>Important:</strong> This app does not generate mobile data, bypass charges or unlock paid networks. Free access depends on the programme, location, daily allowance and current availability. Always confirm details with the provider.</div>
-</main><footer>FREE NET SA · Free to use · Official programme links checked 10 November 2026</footer>
+<div class="card"><strong>Protect your information</strong><p>Confirm the network name with staff or posted signs. Avoid banking and sensitive logins on public Wi-Fi. Prefer HTTPS websites, keep your phone updated, and disconnect when finished.</p></div>
+<div class="notice"><strong>Important:</strong> FREE NET SA does not generate mobile data, bypass charges or unlock paid networks. Free access depends on a real participating network, its rules and availability.</div>
+</main><footer>FREE NET SA · Bloemhof-first directory · Listings are labelled by verification status</footer>
 <script>
-const programmes=[
-{name:"Gauteng Provincial Public Wi-Fi",area:"Gauteng · schools, libraries, hospitals, clinics, hostels and driving licence centres",detail:"The Gauteng Department of e-Government reported 96 public Wi-Fi hotspots and access of up to 500MB free internet per day (September 2026). Exact site-by-site availability should be confirmed before travelling.",tags:"gauteng johannesburg tshwane ekurhuleni soweto",url:"https://www.gov.za/news/media-statements/gauteng-e-government-accelerates-digital-transformation-e-gov-delivers-more",source:"South African Government · 7 Sep 2026"},
-{name:"City of Ekurhuleni Free Wi-Fi",area:"Ekurhuleni · civic buildings, libraries, clinics and public facilities",detail:"The municipality publishes a long list of free Wi-Fi hotspot venues, including facilities in Alberton, Benoni, Boksburg, Germiston, Katlehong, Kempton Park, Springs and other areas. Check the official list for a nearby venue.",tags:"ekurhuleni alberton benoni boksburg germiston katlehong kempton springs",url:"https://www.ekurhuleni.gov.za/for-me/services/wifi/wifi-hotspots/",source:"City of Ekurhuleni · official hotspot directory"},
-{name:"City of Cape Town Public Wi-Fi",area:"Cape Town · 100+ public buildings and selected public spaces",detail:"The City says its public Wi-Fi zones provide 50MB free data per day. Look for Wi-Fi signs at participating libraries, clinics, administration buildings, traffic departments and other City facilities.",tags:"western cape cape town",url:"https://www.capetown.gov.za/local-and-communities/get-online/public-wifi-zones/public-wifi-across-the-city/",source:"City of Cape Town · official public Wi-Fi page"}
+const places=[
+{name:"Lekwa-Teemane Municipal Library, Bloemhof",area:"Bloemhof · public library",status:"POTENTIAL ACCESS POINT · WI-FI NOT CONFIRMED",detail:"The municipality's 2023/24 annual report confirms a library in Bloemhof. The report does not confirm free Wi-Fi, so please ask library staff whether visitors can use internet or public computers before travelling.",tags:"bloemhof north west lekwa teemane library",url:"https://www.lekwateemane.co.za/",source:"Lekwa-Teemane Local Municipality · 2023/24 Annual Report",map:"Lekwa-Teemane Municipal Library, Bloemhof, North West"},
+{name:"Lekwa-Teemane Municipal Offices, Bloemhof",area:"Bloemhof · municipal offices",status:"ASK LOCALLY · WI-FI NOT CONFIRMED",detail:"Municipal offices are a local point of contact for asking whether any public Wi-Fi service or community connectivity project is available. No free public hotspot at this site has been verified.",tags:"bloemhof north west municipal offices",url:"https://www.lekwateemane.co.za/",source:"Lekwa-Teemane Local Municipality",map:"Lekwa-Teemane Municipal Offices, Bloemhof, North West"}
 ];
-function render(list){const out=document.getElementById('results');if(!list.length){out.innerHTML='<div class="empty">No matching programme in this starter directory yet. Try the map search or check the official listings for your province.</div>';return;}out.innerHTML=list.map(p=>'<div class="card"><span class="pill">OFFICIAL PROGRAMME</span><h3>'+p.name+'</h3><div class="meta">'+p.area+'</div><p>'+p.detail+'</p><div class="meta">Source: '+p.source+'</div><a class="action primary" href="'+p.url+'">Open official information</a></div>').join('');}
-function findPlaces(){const q=document.getElementById('place').value.trim().toLowerCase();if(!q){render(programmes);return;}const words=q.split(/[\s,]+/).filter(Boolean);const matches=programmes.filter(p=>{const hay=(p.name+' '+p.area+' '+p.tags+' '+p.detail).toLowerCase();return words.some(w=>hay.includes(w));});render(matches);}
-function openMap(){const q=document.getElementById('place').value.trim();window.location.href='https://www.google.com/maps/search/'+encodeURIComponent('public free Wi-Fi '+q+' South Africa');}
-render(programmes);
+function render(list){const out=document.getElementById('results');if(!list.length){out.innerHTML='<div class="empty">No matching Bloemhof listing yet. Try searching the map or checking another town.</div>';return;}out.innerHTML=list.map(p=>'<div class="card"><span class="pill pending">'+p.status+'</span><h3>'+p.name+'</h3><div class="meta">'+p.area+'</div><p>'+p.detail+'</p><div class="meta">Source: '+p.source+'</div><a class="action primary" href="'+p.url+'">Municipal information</a><a class="action" href="https://www.google.com/maps/search/'+encodeURIComponent(p.map)+'">Get directions</a></div>').join('');}
+function findPlaces(){const q=document.getElementById('place').value.trim().toLowerCase();if(!q||q.includes('bloemhof')||q.includes('north west')||q.includes('lekwa')){render(places);return;}const words=q.split(/[\s,]+/).filter(Boolean);const matches=places.filter(p=>{const hay=(p.name+' '+p.area+' '+p.tags).toLowerCase();return words.some(w=>hay.includes(w));});render(matches);}
+function openMap(){const q=document.getElementById('place').value.trim()||'Bloemhof, North West';window.location.href='https://www.google.com/maps/search/'+encodeURIComponent('public free Wi-Fi '+q+' South Africa');}
+render(places);
 </script></body></html>
