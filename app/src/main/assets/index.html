@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#10251f"><title>FREE NET SA</title>
+<style>
+:root{--ink:#10251f;--green:#176b4a;--mint:#e8f4ee;--paper:#f7f8f6;--muted:#68756e}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px Arial,sans-serif}
+header{background:var(--ink);color:white;padding:25px 20px 22px;border-radius:0 0 22px 22px}
+.brand{font-weight:900;letter-spacing:1.1px;font-size:22px}.brand span{color:#70d5a2}.tag{color:#d2e7db;font-size:13px;margin-top:7px}
+main{padding:18px 16px 36px;max-width:650px;margin:auto}h2{font-size:18px;margin:22px 0 10px}
+.search{width:100%;padding:15px;border:1px solid #dce4de;border-radius:12px;font-size:16px;background:white;outline:none}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.action{border:0;border-radius:12px;padding:14px 10px;background:var(--mint);color:var(--ink);font-weight:700;font-size:14px}
+.action.primary{background:var(--green);color:white}
+.card{background:white;border:1px solid #e5eae6;border-radius:15px;padding:16px;margin:10px 0}
+.card p{color:var(--muted);font-size:14px;line-height:1.5;margin:7px 0 0}
+.notice{background:#fff8e7;border:1px solid #f0dfb5;border-radius:13px;padding:14px;font-size:13px;line-height:1.5;color:#5d4a20;margin-top:14px}
+.pill{display:inline-block;background:var(--mint);color:var(--green);font-size:11px;font-weight:700;padding:5px 8px;border-radius:30px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:22px}
+</style></head><body>
+<header><div class="brand">FREE NET <span>SA</span></div><div class="tag">Find public internet access across South Africa</div></header>
+<main>
+<h2>Find free Wi-Fi</h2>
+<input id="place" class="search" placeholder="Enter town, suburb or area" aria-label="Town, suburb or area">
+<div class="actions"><button class="action primary" onclick="findPlaces()">Find hotspots</button><button class="action" onclick="openMap()">Open map</button></div>
+<h2>Hotspot directory</h2>
+<div id="results" class="card"><span class="pill">DIRECTORY COMING ONLINE</span><p>We're preparing a directory of public Wi-Fi locations. Hotspots will be listed only when their location and access details can be checked.</p></div>
+<h2>Use public Wi-Fi safely</h2>
+<div class="card"><strong>Protect your information</strong><p>Avoid banking or entering sensitive details on public networks. Check the network name with the venue before connecting, and use secure websites.</p></div>
+<div class="notice"><strong>Important:</strong> FREE NET SA helps you find legitimate free access points. It does not create mobile data, bypass network charges or unlock paid Wi-Fi.</div>
+<h2>Help us grow the directory</h2>
+<div class="card"><strong>Know a free public hotspot?</strong><p>Send us the venue name, town and any access rules so it can be checked before being added.</p><button class="action primary" style="margin-top:12px;width:100%" onclick="suggestSpot()">Suggest a hotspot</button></div>
+</main><footer>FREE NET SA · Built to make legitimate internet access easier to find.</footer>
+<script>
+function findPlaces(){const place=document.getElementById('place').value.trim();const out=document.getElementById('results');if(!place){out.innerHTML='<strong>Enter an area first</strong><p>Type a town, suburb or area to search the directory.</p>';return;}out.innerHTML='<strong>Directory being verified</strong><p>There are no verified listings published for '+escapeHtml(place)+' yet. Try the map or check back as the directory grows.</p>';}
+function openMap(){const place=document.getElementById('place').value.trim();window.location.href='https://www.google.com/maps/search/'+encodeURIComponent('public free Wi-Fi '+place+' South Africa');}
+function suggestSpot(){window.location.href='mailto:hotspots@freenetsa.co.za?subject=FREE%20NET%20SA%20hotspot%20suggestion';}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+</script></body></html>
